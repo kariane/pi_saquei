@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/fabio/AndroidStudioProjects/Aula08Examples/app/src/main/res/layout/activity_bottom_navigation.xml" value="0.11354166666666667" />
+        <entry key="..\:/Users/fabio/AndroidStudioProjects/Aula08Examples/app/src/main/res/layout/activity_material_components.xml" value="0.536" />
+        <entry key="..\:/Users/fabio/AndroidStudioProjects/Aula08Examples/app/src/main/res/layout/activity_nv.xml" value="0.1956521739130435" />
+        <entry key="..\:/Users/fabio/AndroidStudioProjects/Aula08Examples/app/src/main/res/layout/activity_other.xml" value="0.1956521739130435" />
+        <entry key="..\:/Users/fabio/AndroidStudioProjects/Aula08Examples/app/src/main/res/layout/activity_tab.xml" value="0.1956521739130435" />
+        <entry key="..\:/Users/fabio/AndroidStudioProjects/Aula08Examples/app/src/main/res/layout/activity_toolbar_menu.xml" value="0.1956521739130435" />
+        <entry key="..\:/Users/fabio/AndroidStudioProjects/Aula08Examples/app/src/main/res/layout/fragment_albums.xml" value="0.1956521739130435" />
+        <entry key="..\:/Users/fabio/AndroidStudioProjects/Aula08Examples/app/src/main/res/layout/fragment_artists.xml" value="0.1956521739130435" />
+        <entry key="..\:/Users/fabio/AndroidStudioProjects/Aula08Examples/app/src/main/res/layout/fragment_recents.xml" value="0.16799999999999998" />
+        <entry key="..\:/Users/fabio/AndroidStudioProjects/bcc-and-mat-3/app/src/main/res/drawable/add.xml" value="0.1" />
+        <entry key="..\:/Users/fabio/AndroidStudioProjects/bcc-and-mat-3/app/src/main/res/drawable/music_icon.xml" value="0.1" />
+        <entry key="..\:/Users/fabio/AndroidStudioProjects/bcc-and-mat-3/app/src/main/res/layout/activity_bottom_navigation.xml" value="0.264" />
+        <entry key="..\:/Users/fabio/AndroidStudioProjects/bcc-and-mat-3/app/src/main/res/layout/activity_nv.xml" value="0.2" />
+        <entry key="..\:/Users/fabio/AndroidStudioProjects/bcc-and-mat-3/app/src/main/res/layout/activity_tab.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/fabio/AndroidStudioProjects/bcc-and-mat-3/app/src/main/res/layout/activity_toolbar_menu.xml" value="0.5" />
+        <entry key="..\:/Users/fabio/AndroidStudioProjects/bcc-and-mat-3/app/src/main/res/layout/cabecalho_nv.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/fabio/AndroidStudioProjects/bcc-and-mat-3/app/src/main/res/layout/fragment_albums.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/fabio/AndroidStudioProjects/bcc-and-mat-3/app/src/main/res/layout/fragment_artists.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/fabio/AndroidStudioProjects/bcc-and-mat-3/app/src/main/res/layout/fragment_recents.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/fabio/AndroidStudioProjects/bcc-and-mat-3/app/src/main/res/menu/bottomnavmenu.xml" value="0.536" />
+        <entry key="..\:/Users/fabio/AndroidStudioProjects/bcc-and-mat-3/app/src/main/res/menu/nvmenu.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/fabio/AndroidStudioProjects/bcc-and-mat-3/app/src/main/res/menu/toolbarmenu.xml" value="0.264" />
+        <entry key="..\:/Users/fabio/Desktop/tsi213aula07-master/app/src/main/res/layout/activity_bottom_navigation.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/fabio/Desktop/tsi213aula07-master/app/src/main/res/layout/activity_nv.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/fabio/Desktop/tsi213aula07-master/app/src/main/res/layout/activity_tab.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/fabio/Desktop/tsi213aula07-master/app/src/main/res/layout/activity_toolbar_menu.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/fabio/Desktop/tsi213aula07-master/app/src/main/res/layout/cabecalho_nv.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/fabio/Desktop/tsi213aula07-master/app/src/main/res/layout/fragment_albums.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/fabio/Desktop/tsi213aula07-master/app/src/main/res/layout/fragment_artists.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/fabio/Desktop/tsi213aula07-master/app/src/main/res/layout/fragment_recents.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/fabio/Desktop/tsi213aula07-master/app/src/main/res/menu/bottomnavmenu.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/fabio/Desktop/tsi213aula07-master/app/src/main/res/menu/nvmenu.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/fabio/Desktop/tsi213aula07-master/app/src/main/res/menu/toolbarmenu.xml" value="0.36666666666666664" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/listas"
+        android:title="Listas">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/recentes"
+                    android:icon="@drawable/history"
+                    android:title="Recentes"
+                    app:showAsAction="always" />
+                <item
+                    android:id="@+id/favoritadas"
+                    android:icon="@drawable/favorite"
+                    android:title="Favoritadas"
+                    app:showAsAction="always" />
+            </group>
+        </menu>
+    </item>
+    <item
+        android:id="@+id/categorias"
+        android:title="Categorias">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/artistas"
+                    android:icon="@drawable/person"
+                    android:title="Artistas" />
+                <item
+                    android:id="@+id/albuns"
+                    android:icon="@drawable/album"
+                    android:title="Álbuns" />
+            </group>
+        </menu>
+    </item>
+    <item
+        android:id="@+id/opcoes"
+        android:title="Opções">
+        <menu>
+            <group >
+                <item
+                    android:id="@+id/config"
+                    android:icon="@drawable/settings"
+                    android:title="Configurações" />
+                <item
+                    android:id="@+id/encerrar"
+                    android:icon="@drawable/close"
+                    android:title="Encerrar" />
+            </group>
+        </menu>
+    </item>
+</menu>
