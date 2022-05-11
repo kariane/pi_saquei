@@ -1,6 +1,5 @@
 package com.example.pi.ui.dashboard
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.example.pi.R
 import com.example.pi.databinding.FragmentDashboardBinding
 
 class DashboardFragment : Fragment() {
@@ -33,7 +33,10 @@ class DashboardFragment : Fragment() {
         dashboardViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }
-
+    binding.buttonMatch.setOnClickListener {
+        val frag = AddMatchFragment()
+        activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.container, frag)?.commit()
+    }
 
         return root
     }
