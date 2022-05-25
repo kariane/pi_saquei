@@ -2,16 +2,13 @@ package br.senac.pi.bottomnavigation
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import br.senac.pi.R
 import br.senac.pi.databinding.ActivityBottomNavigationBinding
-import br.senac.pi.databinding.CardNoteBinding
 import br.senac.pi.fragments.LugaresFragment
 import br.senac.pi.fragments.MatchFragment
-import br.senac.pi.fragments.RecentsFragment
-import br.senac.pi.model.Encontro
+import br.senac.pi.fragments.MateriaFragment
 import br.senac.pi.model.Usuario
 import com.firebase.ui.auth.AuthUI
 import com.google.firebase.auth.FirebaseAuth
@@ -40,7 +37,7 @@ class BottomNavigationActivity : AppCompatActivity() {
                     supportFragmentManager.beginTransaction().replace(R.id.container, frag).commit()
                 }
                 else -> {
-                    val frag = RecentsFragment()
+                    val frag = MateriaFragment()
                     supportFragmentManager.beginTransaction().replace(R.id.container, frag).commit()
                 }
             }

@@ -3,9 +3,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/recentes"
+        android:id="@+id/Matérias"
         android:icon="@drawable/history"
-        android:title="Recentes"
+        android:title="Matérias"
         app:showAsAction="always" />
 
     <item
