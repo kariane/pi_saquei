@@ -52,10 +52,16 @@ import com.google.firebase.ktx.Firebase
          list.forEach() {
              val card = CardNoteBinding.inflate(inflater)
 
-             card.textTitleMateria.text = it.materia
-             card.textTitleData.text = it.data
-             card.textTitleLocal.text = it.local
-             card.textTitleUsuarioMatch.text = it.usuario
+             card.textTitleMateria.text = "Matéria: " + it.materia
+             card.textTitleData.text = "Data: " + it.data
+             card.textTitleLocal.text = "Local: " + it.local
+             card.textTitleUsuarioMatch.text = "Usuário do encontro: " + it.usuario
+
+            card.imageDelete.setOnClickListener { imageView ->
+                 val noMatch = database.child("match").child(it.id)
+                 noMatch.removeValue()
+             }
+
              binding.container.addView(card.root)
          }
      }
