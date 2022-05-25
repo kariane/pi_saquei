@@ -2,28 +2,30 @@ package br.senac.pi.fragments
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Toast
-import br.senac.pi.R
+import androidx.fragment.app.Fragment
 import br.senac.pi.databinding.FragmentAddMatchBinding
 import br.senac.pi.model.Encontro
-
+import br.senac.pi.model.Local
+import br.senac.pi.model.Materia
+import br.senac.pi.model.Usuario
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import java.util.*
+
 
 class AddMatchFragment : Fragment() {
 
     private lateinit var database: DatabaseReference
     lateinit var binding: FragmentAddMatchBinding
-
+    var spinner = ""
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
@@ -32,112 +34,13 @@ class AddMatchFragment : Fragment() {
         database = Firebase.database.reference
         configurarBase()
 
-        database.child("usuarios").get().addOnSuccessListener {
-
-            val str = it.value.toString().replace("[", "").replace("]", "")
-            val delim = ","
-            var i = 0
-            val list = str.split(delim)
-            val itensSpinner = arrayOfNulls<String>(list.size)
-
-            list.forEach {
-                if(it!="null"){
-                    itensSpinner.set(i, it)
-                    i = i + 1
-                }else {
-                    itensSpinner.set(i, "Selecione")
-                    i = i + 1
-                }
-            }
-
-            val adapter = activity?.let {
-                ArrayAdapter<String>(
-                    it,
-                    android.R.layout.simple_spinner_item,
-                    itensSpinner
-                )
-            }
-
-            adapter?.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            binding.spinnerUsuario.adapter = adapter
-
-        }.addOnFailureListener{
-            Log.e("firebase", "Error getting data", it)
-        }
-
-        //Preencher spinner de materias
-        database.child("materias").get().addOnSuccessListener {
-
-            val str = it.value.toString().replace("[", "").replace("]", "")
-            val delim = ","
-            var i = 0
-            val list = str.split(delim)
-            val itensSpinner = arrayOfNulls<String>(list.size)
-
-            list.forEach {
-                if(it!="null"){
-                    itensSpinner.set(i, it)
-                    i = i + 1
-                }else {
-                    itensSpinner.set(i, "Selecione")
-                    i = i + 1
-                }
-            }
-
-            val adapter = activity?.let {
-                ArrayAdapter<String>(
-                    it,
-                    android.R.layout.simple_spinner_item,
-                    itensSpinner
-                )
-            }
-
-            adapter?.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            binding.spinnerMateria.adapter = adapter
-
-        }.addOnFailureListener{
-            Log.e("firebase", "Error getting data", it)
-        }
-
-
-        database.child("lugares").get().addOnSuccessListener {
-
-            val str = it.value.toString().replace("[", "").replace("]", "")
-            val delim = ","
-            var i = 0
-            val list = str.split(delim)
-            val itensSpinner = arrayOfNulls<String>(list.size)
-
-            list.forEach {
-                if(it!="null"){
-                    itensSpinner.set(i, it)
-                    i = i + 1
-                }else {
-                    itensSpinner.set(i, "Selecione")
-                    i = i + 1
-                }
-
-            }
-
-            val adapter = activity?.let {
-                ArrayAdapter<String>(
-                    it,
-                    android.R.layout.simple_spinner_item,
-                    itensSpinner
-                )
-            }
-
-            adapter?.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            binding.spinnerLocal.adapter = adapter
-
-        }.addOnFailureListener{
-            Log.e("firebase", "Error getting data", it)
-        }
 
         //botao continuar
         binding.buttonNext.setOnClickListener {
             val usuario = FirebaseAuth.getInstance().currentUser
-
+            if (usuario != null) {
+                database = FirebaseDatabase.getInstance().reference.child(usuario.uid)
+            }
             val match = Encontro(usuario = binding.spinnerUsuario.selectedItem.toString(),
                                  data = binding.editDate.text.toString(),
                                  local = binding.spinnerLocal.selectedItem.toString(),
@@ -153,14 +56,159 @@ class AddMatchFragment : Fragment() {
         return binding.root
     }
 
+    private fun handleData(snapshot: DataSnapshot) {
+
+
+        if(spinner=="materias"){
+            val itemList = arrayListOf<Materia>()
+            snapshot.children.forEach {
+                val match = it.getValue(Materia::class.java)
+                match?.let {
+                    itemList.add(it)
+                }
+                refreshUiMateria(itemList)
+            }
+        }else if(spinner=="locais"){
+            val itemList = arrayListOf<Local>()
+            snapshot.children.forEach {
+                val match = it.getValue(Local::class.java)
+                match?.let {
+                    itemList.add(it)
+                }
+                refreshUiLocal(itemList)
+            }
+
+        } else if(spinner=="usuarios"){
+            val itemList = arrayListOf<Usuario>()
+            snapshot.children.forEach {
+                val match = it.getValue(Usuario::class.java)
+                match?.let {
+                    itemList.add(it)
+                }
+                refreshUiUsuario(itemList)
+            }
+        }
+
+
+    }
+
+    fun refreshUiMateria(list: List<Materia>) {
+        val itensSpinner = arrayOfNulls<String>(list.size+1)
+        var i = 0
+        itensSpinner.set(i,"Selecione")
+        list.forEach(){
+            i++
+            itensSpinner.set(i,it.nome)
+        }
+            val adapter = activity?.let {
+                ArrayAdapter<String>(
+                    it,
+                    android.R.layout.simple_spinner_item,
+                    itensSpinner
+                )
+            }
+
+
+        adapter?.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        binding.spinnerMateria.adapter = adapter
+
+
+
+    }
+    fun refreshUiLocal(list: List<Local>) {
+        val itensSpinner = arrayOfNulls<String>(list.size+1)
+        var i = 0
+        itensSpinner.set(i,"Selecione")
+        list.forEach(){
+            i++
+            itensSpinner.set(i,it.nome)
+        }
+        val adapter = activity?.let {
+            ArrayAdapter<String>(
+                it,
+                android.R.layout.simple_spinner_item,
+                itensSpinner
+            )
+        }
+
+
+        adapter?.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        binding.spinnerLocal.adapter = adapter
+
+    }
+
+    fun refreshUiUsuario(list: List<Usuario>) {
+        val itensSpinner = arrayOfNulls<String>(list.size+1)
+        var i = 0
+        itensSpinner.set(i,"Selecione")
+        list.forEach(){
+            i++
+            itensSpinner.set(i,it.nome)
+        }
+        val adapter = activity?.let {
+            ArrayAdapter<String>(
+                it,
+                android.R.layout.simple_spinner_item,
+                itensSpinner
+            )
+        }
+
+
+        adapter?.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        binding.spinnerUsuario.adapter = adapter
+
+    }
+
+
     fun configurarBase(){
 
         val usuario = FirebaseAuth.getInstance().currentUser
 
+
         if(usuario != null){
-            database = FirebaseDatabase.getInstance().reference.child(usuario.uid)
+            database = FirebaseDatabase.getInstance().reference.child("configuracoes")
         }
 
+
+        var databaseListenerSubject = object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                spinner="materias"
+                handleData(snapshot)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.w("MainActivity", "onCancelled", error.toException())
+            }
+
+        }
+
+        var databaseListenerPlace = object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                spinner="locais"
+                handleData(snapshot)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.w("MainActivity", "onCancelled", error.toException())
+            }
+
+        }
+
+        var databaseListenerUser = object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                spinner="usuarios"
+                handleData(snapshot)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.w("MainActivity", "onCancelled", error.toException())
+            }
+
+        }
+
+        database.child("materias").addValueEventListener(databaseListenerSubject)
+        database.child("locais").addValueEventListener(databaseListenerPlace)
+        database.child("usuarios").addValueEventListener(databaseListenerUser)
 
 
     }

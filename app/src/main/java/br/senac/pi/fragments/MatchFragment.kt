@@ -30,14 +30,12 @@ import com.google.firebase.ktx.Firebase
             requireActivity().supportFragmentManager.beginTransaction().replace(R.id.container, frag).commit()
 
         }
+        configurarBase(inflater)
         return binding.root
     }
-    override fun onResume() {
-        super.onResume()
-        configurarBase()
-    }
 
-     private fun handleData(snapshot: DataSnapshot) {
+
+     private fun handleData(snapshot: DataSnapshot, inflater: LayoutInflater) {
          val itemList = arrayListOf<Encontro>()
          snapshot.children.forEach {
                 val match = it.getValue(Encontro::class.java)
@@ -46,13 +44,13 @@ import com.google.firebase.ktx.Firebase
                 }
 
          }
-         refreshUi(itemList)
+         refreshUi(itemList, inflater)
      }
 
-     fun refreshUi(list: List<Encontro>) {
+     fun refreshUi(list: List<Encontro>, inflater: LayoutInflater) {
          binding.container.removeAllViews()
          list.forEach() {
-             val card = CardNoteBinding.inflate(layoutInflater)
+             val card = CardNoteBinding.inflate(inflater)
 
              card.textTitleMateria.text = it.materia
              card.textTitleData.text = it.data
@@ -61,7 +59,7 @@ import com.google.firebase.ktx.Firebase
              binding.container.addView(card.root)
          }
      }
-     fun configurarBase(){
+     fun configurarBase(inflater: LayoutInflater){
 
          val usuario = FirebaseAuth.getInstance().currentUser
 
@@ -71,7 +69,7 @@ import com.google.firebase.ktx.Firebase
 
          var databaseListener = object : ValueEventListener {
              override fun onDataChange(snapshot: DataSnapshot) {
-                 handleData(snapshot)
+                 handleData(snapshot, inflater)
              }
 
              override fun onCancelled(error: DatabaseError) {
