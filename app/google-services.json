@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "782559406347",
+    "firebase_url": "https://pisaquei-default-rtdb.firebaseio.com",
+    "project_id": "pisaquei",
+    "storage_bucket": "pisaquei.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:782559406347:android:a75c1f0771a3a9a55a1a0e",
+        "android_client_info": {
+          "package_name": "br.senac.pi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "782559406347-3inm5unpm3f986bbgfq03qjis198dhs6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.senac.pi",
+            "certificate_hash": "cdb22db113d3d3a83b348e5861a0ebc749a339be"
+          }
+        },
+        {
+          "client_id": "782559406347-cjd9h4frg4rcs3csdmubh5pe9pdsufle.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAFiYONVTR-kk4D20xhBUsCgZmhI7SSzuE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "782559406347-cjd9h4frg4rcs3csdmubh5pe9pdsufle.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
