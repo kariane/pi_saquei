@@ -12,6 +12,7 @@ import br.senac.pi.fragments.LugaresFragment
 import br.senac.pi.fragments.MatchFragment
 import br.senac.pi.fragments.RecentsFragment
 import br.senac.pi.model.Encontro
+import br.senac.pi.model.Usuarios
 import com.firebase.ui.auth.AuthUI
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
@@ -90,11 +91,18 @@ class BottomNavigationActivity : AppCompatActivity() {
         val usuario = FirebaseAuth.getInstance().currentUser
 
         if(usuario != null){
+            database = FirebaseDatabase.getInstance().reference.child("configuracoes")
+
+            val insertUser = Usuarios(id = usuario.uid, nome = usuario.displayName.toString())
+
+            val newUser = database.child("usuarios").child(usuario.uid)
+            newUser.key?.let {
+                insertUser.id=it
+            }
+            newUser.setValue(insertUser)
+
             database = FirebaseDatabase.getInstance().reference.child(usuario.uid)
         }
-
-
-
     }
 
 
