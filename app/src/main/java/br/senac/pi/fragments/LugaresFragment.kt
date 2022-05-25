@@ -7,10 +7,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import br.senac.pi.R
 
-class AlbumsFragment : Fragment() {
+class LugaresFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_albums, container, false)
+        return inflater.inflate(R.layout.fragment_lugares, container, false)
     }
 
 }

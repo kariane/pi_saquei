@@ -10,13 +10,13 @@
 
     <item
         android:id="@+id/artistas"
-        android:icon="@drawable/person"
-        android:title="Artistas"
+        android:icon="@drawable/calendar_add_on"
+        android:title="Match"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/albuns"
-        android:icon="@drawable/album"
-        android:title="Álbuns"
+        android:icon="@drawable/add_location"
+        android:title="Lugares"
         app:showAsAction="ifRoom" />
 
 </menu>
