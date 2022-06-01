@@ -53,13 +53,13 @@
             android:layout_marginBottom="8dp"
             android:text="TextView"
             android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/textTitleMateria"
+            app:layout_constraintBottom_toTopOf="@+id/textTitleNome"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textTitleData" />
 
         <TextView
-            android:id="@+id/textTitleMateria"
+            android:id="@+id/textTitleNome"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="6dp"
@@ -87,7 +87,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textTitleMateria" />
+            app:layout_constraintTop_toBottomOf="@+id/textTitleNome" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

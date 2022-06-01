@@ -56,6 +56,14 @@
         <entry key="..\:/Users/welli/AndroidStudioProjects/pi5_exemplo_/app/src/main/res/menu/toolbarmenu.xml" value="0.14722222222222223" />
         <entry key="..\:/www/PI/pi_saquei/app/src/main/res/layout/card_note.xml" value="0.67" />
         <entry key="..\:/www/PI/pi_saquei/app/src/main/res/layout/fragment_add_match.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_bottom_navigation.xml" value="0.4036458333333333" />
+        <entry key="app/src/main/res/layout/card_note.xml" value="0.4036458333333333" />
+        <entry key="app/src/main/res/layout/card_note_materia.xml" value="0.4036458333333333" />
+        <entry key="app/src/main/res/layout/fragment_add_match.xml" value="0.4036458333333333" />
+        <entry key="app/src/main/res/layout/fragment_match.xml" value="0.4036458333333333" />
+        <entry key="app/src/main/res/layout/fragment_materia.xml" value="0.4036458333333333" />
+        <entry key="app/src/main/res/menu/bottomnavmenu.xml" value="0.4036458333333333" />
+        <entry key="app/src/main/res/menu/nvmenu.xml" value="0.4036458333333333" />
       </map>
     </option>
   </component>

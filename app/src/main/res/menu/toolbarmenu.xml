@@ -15,12 +15,12 @@
         app:showAsAction="always" />
 
     <item
-        android:id="@+id/artistas"
+        android:id="@+id/Match"
         android:icon="@drawable/person"
         android:title="Artistas"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/albuns"
+        android:id="@+id/Lugares"
         android:icon="@drawable/album"
         android:title="Álbuns"
         app:showAsAction="ifRoom" />

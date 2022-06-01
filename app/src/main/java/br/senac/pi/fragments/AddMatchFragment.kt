@@ -14,12 +14,9 @@ import br.senac.pi.model.Local
 import br.senac.pi.model.Materia
 import br.senac.pi.model.Usuario
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-import java.util.*
-
 
 class AddMatchFragment : Fragment() {
 
@@ -33,7 +30,6 @@ class AddMatchFragment : Fragment() {
         binding = FragmentAddMatchBinding.inflate(layoutInflater)
         database = Firebase.database.reference
         configurarBase()
-
 
         //botao continuar
         binding.buttonNext.setOnClickListener {
@@ -57,7 +53,6 @@ class AddMatchFragment : Fragment() {
     }
 
     private fun handleData(snapshot: DataSnapshot) {
-
 
         if(spinner=="materias"){
             val itemList = arrayListOf<Materia>()
@@ -88,8 +83,6 @@ class AddMatchFragment : Fragment() {
                 refreshUiUsuario(itemList)
             }
         }
-
-
     }
 
     fun refreshUiMateria(list: List<Materia>) {
@@ -108,13 +101,10 @@ class AddMatchFragment : Fragment() {
                 )
             }
 
-
         adapter?.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         binding.spinnerMateria.adapter = adapter
-
-
-
     }
+
     fun refreshUiLocal(list: List<Local>) {
         val itensSpinner = arrayOfNulls<String>(list.size+1)
         var i = 0
@@ -131,10 +121,8 @@ class AddMatchFragment : Fragment() {
             )
         }
 
-
         adapter?.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         binding.spinnerLocal.adapter = adapter
-
     }
 
     fun refreshUiUsuario(list: List<Usuario>) {
@@ -153,22 +141,17 @@ class AddMatchFragment : Fragment() {
             )
         }
 
-
         adapter?.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         binding.spinnerUsuario.adapter = adapter
-
     }
-
 
     fun configurarBase(){
 
         val usuario = FirebaseAuth.getInstance().currentUser
 
-
         if(usuario != null){
             database = FirebaseDatabase.getInstance().reference.child("configuracoes")
         }
-
 
         var databaseListenerSubject = object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -179,7 +162,6 @@ class AddMatchFragment : Fragment() {
             override fun onCancelled(error: DatabaseError) {
                 Log.w("MainActivity", "onCancelled", error.toException())
             }
-
         }
 
         var databaseListenerPlace = object : ValueEventListener {
@@ -191,7 +173,6 @@ class AddMatchFragment : Fragment() {
             override fun onCancelled(error: DatabaseError) {
                 Log.w("MainActivity", "onCancelled", error.toException())
             }
-
         }
 
         var databaseListenerUser = object : ValueEventListener {
@@ -203,16 +184,10 @@ class AddMatchFragment : Fragment() {
             override fun onCancelled(error: DatabaseError) {
                 Log.w("MainActivity", "onCancelled", error.toException())
             }
-
         }
 
         database.child("materias").addValueEventListener(databaseListenerSubject)
         database.child("locais").addValueEventListener(databaseListenerPlace)
         database.child("usuarios").addValueEventListener(databaseListenerUser)
-
-
     }
-
 }
-
-

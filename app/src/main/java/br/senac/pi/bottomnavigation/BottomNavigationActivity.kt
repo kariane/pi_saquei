@@ -28,11 +28,11 @@ class BottomNavigationActivity : AppCompatActivity() {
 
         binding.bottomNavigation.setOnItemSelectedListener {
             when(it.itemId) {
-                R.id.artistas -> {
+                R.id.Match -> {
                     val frag = MatchFragment()
                     supportFragmentManager.beginTransaction().replace(R.id.container, frag).commit()
                 }
-                R.id.albuns -> {
+                R.id.Lugares -> {
                     val frag = LugaresFragment()
                     supportFragmentManager.beginTransaction().replace(R.id.container, frag).commit()
                 }
@@ -41,10 +41,7 @@ class BottomNavigationActivity : AppCompatActivity() {
                     supportFragmentManager.beginTransaction().replace(R.id.container, frag).commit()
                 }
             }
-
-
             true
-
         }
     }
 
@@ -53,7 +50,6 @@ class BottomNavigationActivity : AppCompatActivity() {
         if(FirebaseAuth.getInstance().currentUser != null){
             Toast.makeText(this, "Entrou", Toast.LENGTH_LONG).show()
             configurarBase()
-
 
         } else {
             //Cria um array list com os providers de autenticação
@@ -68,7 +64,6 @@ class BottomNavigationActivity : AppCompatActivity() {
                     .build()
             startActivityForResult(i,1)
         }
-
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -77,7 +72,6 @@ class BottomNavigationActivity : AppCompatActivity() {
         if(requestCode == 1 && resultCode == RESULT_OK){
             Toast.makeText(this,"Autenticado", Toast.LENGTH_LONG).show()
             configurarBase()
-
         } else {
             finishAffinity()
         }
@@ -101,7 +95,4 @@ class BottomNavigationActivity : AppCompatActivity() {
             database = FirebaseDatabase.getInstance().reference.child(usuario.uid)
         }
     }
-
-
-
 }

@@ -26,11 +26,11 @@
         <menu>
             <group android:checkableBehavior="single">
                 <item
-                    android:id="@+id/artistas"
+                    android:id="@+id/Match"
                     android:icon="@drawable/person"
                     android:title="Artistas" />
                 <item
-                    android:id="@+id/albuns"
+                    android:id="@+id/Lugares"
                     android:icon="@drawable/album"
                     android:title="Álbuns" />
             </group>

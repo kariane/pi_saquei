@@ -34,15 +34,13 @@ import com.google.firebase.ktx.Firebase
         return binding.root
     }
 
-
      private fun handleData(snapshot: DataSnapshot, inflater: LayoutInflater) {
          val itemList = arrayListOf<Encontro>()
          snapshot.children.forEach {
-                val match = it.getValue(Encontro::class.java)
-                match?.let {
-                    itemList.add(it)
-                }
-
+             val match = it.getValue(Encontro::class.java)
+             match?.let {
+                 itemList.add(it)
+             }
          }
          refreshUi(itemList, inflater)
      }
@@ -52,7 +50,7 @@ import com.google.firebase.ktx.Firebase
          list.forEach() {
              val card = CardNoteBinding.inflate(inflater)
 
-             card.textTitleMateria.text = "Matéria: " + it.materia
+             card.textTitleNome.text = "Matéria: " + it.materia
              card.textTitleData.text = "Data: " + it.data
              card.textTitleLocal.text = "Local: " + it.local
              card.textTitleUsuarioMatch.text = "Usuário do encontro: " + it.usuario
@@ -60,7 +58,7 @@ import com.google.firebase.ktx.Firebase
             card.imageDelete.setOnClickListener { imageView ->
                  val noMatch = database.child("match").child(it.id)
                  noMatch.removeValue()
-             }
+            }
 
              binding.container.addView(card.root)
          }
@@ -81,13 +79,8 @@ import com.google.firebase.ktx.Firebase
              override fun onCancelled(error: DatabaseError) {
                  Log.w("MainActivity", "onCancelled", error.toException())
              }
-
          }
 
          database.child("match").addValueEventListener(databaseListener)
-
-
      }
-
-
 }

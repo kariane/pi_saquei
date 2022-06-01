@@ -9,12 +9,12 @@
         app:showAsAction="always" />
 
     <item
-        android:id="@+id/artistas"
+        android:id="@+id/Match"
         android:icon="@drawable/calendar_add_on"
         android:title="Match"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/albuns"
+        android:id="@+id/Lugares"
         android:icon="@drawable/add_location"
         android:title="Lugares"
         app:showAsAction="ifRoom" />
