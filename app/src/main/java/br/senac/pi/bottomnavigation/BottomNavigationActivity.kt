@@ -6,7 +6,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import br.senac.pi.R
 import br.senac.pi.databinding.ActivityBottomNavigationBinding
-import br.senac.pi.fragments.LugaresFragment
 import br.senac.pi.fragments.MatchFragment
 import br.senac.pi.fragments.MateriaFragment
 import br.senac.pi.model.Usuario
