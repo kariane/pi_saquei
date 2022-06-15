@@ -17,15 +17,15 @@ class AddMateriaFragment : Fragment() {
 
     private lateinit var database: DatabaseReference
     lateinit var binding: FragmentAddMateriaBinding
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-
-        // Inflate the layout for this fragment
         binding = FragmentAddMateriaBinding.inflate(layoutInflater)
-        database = Firebase.database.reference
-        configurarBase()
 
-        //botao continuar
+        // Identificando qual banco de dados estamos utilizando (no caso, o Firebase)
+        database = Firebase.database.reference
+
+        // Adicionando listener no botão de adicionar locais para enviar os dados do formulário para o Firebase
         binding.buttonAdicionar.setOnClickListener {
             val materia = Materia(nome = binding.editTextMateria.text.toString())
 
@@ -37,15 +37,6 @@ class AddMateriaFragment : Fragment() {
             Toast.makeText(activity,"Materia adicionado!", Toast.LENGTH_LONG).show()
         }
         return binding.root
-    }
-
-    fun configurarBase(){
-
-        val usuario = FirebaseAuth.getInstance().currentUser
-
-        if(usuario != null){
-            database = FirebaseDatabase.getInstance().reference.child("configuracoes")
-        }
     }
 }
 

@@ -38,9 +38,9 @@ class AddMatchFragment : Fragment() {
                 database = FirebaseDatabase.getInstance().reference.child(usuario.uid)
             }
             val match = Encontro(usuario = binding.spinnerUsuario.selectedItem.toString(),
-                                 data = binding.editDate.text.toString(),
-                                 local = binding.spinnerLocal.selectedItem.toString(),
-                                 materia = binding.spinnerMateria.selectedItem.toString())
+                data = binding.editDate.text.toString(),
+                local = binding.spinnerLocal.selectedItem.toString(),
+                materia = binding.spinnerMateria.selectedItem.toString())
 
             val newMatch = database.child("match").push()
             newMatch.key?.let {
@@ -63,7 +63,7 @@ class AddMatchFragment : Fragment() {
                 }
                 refreshUiMateria(itemList)
             }
-        }else if(spinner=="locais"){
+        }else if(spinner=="places"){
             val itemList = arrayListOf<Local>()
             snapshot.children.forEach {
                 val match = it.getValue(Local::class.java)
@@ -72,7 +72,6 @@ class AddMatchFragment : Fragment() {
                 }
                 refreshUiLocal(itemList)
             }
-
         } else if(spinner=="usuarios"){
             val itemList = arrayListOf<Usuario>()
             snapshot.children.forEach {
@@ -111,7 +110,7 @@ class AddMatchFragment : Fragment() {
         itensSpinner.set(i,"Selecione")
         list.forEach(){
             i++
-            itensSpinner.set(i,it.nome)
+            itensSpinner.set(i,it.surname)
         }
         val adapter = activity?.let {
             ArrayAdapter<String>(
@@ -150,7 +149,7 @@ class AddMatchFragment : Fragment() {
         val usuario = FirebaseAuth.getInstance().currentUser
 
         if(usuario != null){
-            database = FirebaseDatabase.getInstance().reference.child("configuracoes")
+            database = FirebaseDatabase.getInstance().reference
         }
 
         var databaseListenerSubject = object : ValueEventListener {
@@ -166,7 +165,7 @@ class AddMatchFragment : Fragment() {
 
         var databaseListenerPlace = object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                spinner="locais"
+                spinner="places"
                 handleData(snapshot)
             }
 
@@ -187,7 +186,7 @@ class AddMatchFragment : Fragment() {
         }
 
         database.child("materias").addValueEventListener(databaseListenerSubject)
-        database.child("locais").addValueEventListener(databaseListenerPlace)
+        database.child("places").addValueEventListener(databaseListenerPlace)
         database.child("usuarios").addValueEventListener(databaseListenerUser)
     }
 }

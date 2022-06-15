@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import br.senac.pi.R
 import br.senac.pi.databinding.ActivityBottomNavigationBinding
+import br.senac.pi.fragments.LocalFragment
 import br.senac.pi.fragments.MatchFragment
 import br.senac.pi.fragments.MateriaFragment
 import br.senac.pi.model.Usuario
@@ -32,7 +33,7 @@ class BottomNavigationActivity : AppCompatActivity() {
                     supportFragmentManager.beginTransaction().replace(R.id.container, frag).commit()
                 }
                 R.id.Lugares -> {
-                    val frag = LugaresFragment()
+                    val frag = LocalFragment()
                     supportFragmentManager.beginTransaction().replace(R.id.container, frag).commit()
                 }
                 else -> {
